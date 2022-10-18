@@ -16,18 +16,18 @@ function detectWinner(board) {
   ];
 
   for (let line = 0; line < winningLines.length; line++) {
-    let [ sq1, sq2, sq3 ] = winningLines[line];
+    let [sq1, sq2, sq3] = winningLines[line];
 
     if (
-        board[sq1] === HUMAN_MARKER &&
-        board[sq2] === HUMAN_MARKER &&
-        board[sq3] === HUMAN_MARKER
+      board[sq1] === HUMAN_MARKER &&
+      board[sq2] === HUMAN_MARKER &&
+      board[sq3] === HUMAN_MARKER
     ) {
       return 'Player';
     } else if (
-        board[sq1] === COMPUTER_MARKER &&
-        board[sq2] === COMPUTER_MARKER &&
-        board[sq3] === COMPUTER_MARKER
+      board[sq1] === COMPUTER_MARKER &&
+      board[sq2] === COMPUTER_MARKER &&
+      board[sq3] === COMPUTER_MARKER
     ) {
       return 'Computer';
     }
@@ -102,28 +102,28 @@ function computerChoosesSquare(board) {
 
 while (true) {
   let board = initializeBoard();
-  
-  while(true) {
+
+  while (true) {
+
+    displayBoard(board);
+    playerChoosesSquare(board);
+    if (someoneWon(board) || boardFull(board)) break;
+    computerChoosesSquare(board);
+    if (someoneWon(board) || boardFull(board)) break;
+    displayBoard(board);
+  }
 
   displayBoard(board);
-  playerChoosesSquare(board);
-  if (someoneWon(board) || boardFull(board)) break;
-  computerChoosesSquare(board);
-  if (someoneWon(board) || boardFull(board)) break;
-  displayBoard(board);
-}
 
-displayBoard(board);
+  if (someoneWon(board)) {
+    prompt(`${detectWinner(board)} won!`);
+  } else {
+    prompt("It's a tie!");
+  }
 
-if (someoneWon(board)) {
-  prompt(`${detectWinner(board)} won!`);
-} else {
-  prompt("It's a tie!");
-}
-
-prompt('Play again? (y or n)');
-let answer = readline.question().toLowerCase()[0];
-if (answer !== 'y') break;
+  prompt('Play again? (y or n)');
+  let answer = readline.question().toLowerCase()[0];
+  if (answer !== 'y') break;
 }
 
 
