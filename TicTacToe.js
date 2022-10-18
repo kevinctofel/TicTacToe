@@ -1,4 +1,5 @@
-const readline = require("readline-sync");
+import joinOr from "./joinOr.js";
+import readline from "readline-sync";
 
 const INITIAL_MARKER = ' ';
 const HUMAN_MARKER = 'X';
@@ -82,7 +83,7 @@ function playerChoosesSquare(board) {
   let square;
 
   while (true) {
-    prompt(`Choose a square (${emptySquares(board).join(', ')}):`);
+    prompt(`Choose a square (${joinOr(emptySquares(board).join(', '))}):`);
     square = readline.question().trim();
     if (emptySquares(board).includes(square)) break;
 

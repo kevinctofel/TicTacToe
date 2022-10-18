@@ -9,8 +9,8 @@
 
 // Use this function in the game when prompting the user to mark a square.
 
-const joinOr = (arr) => {
-  return arr.slice(0, arr.length - 1) + " or " + arr.slice(-1);
+export default function joinOr(arr) {
+  return arr.slice(0, arr.length - 1) + "or " + arr.slice(-1);
 }
 
-console.log(joinOr([1, 2, 3, 4, 5]));
+// console.log(joinOr([1, 2, 3, 4, 5]));
